@@ -18,7 +18,7 @@ function Home() {
             <h1>Characters</h1>
 
             <Masonry
-                breakpointCols={3}
+                breakpointCols={4}
                 className="my-masonary-grid"
                 columnClassName="my-masonary-grid_column"
             >
