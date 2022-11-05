@@ -4,6 +4,7 @@ import { fetchCharacters } from '../../redux/charactersSlice';
 
 import Masonry from "react-masonry-css";
 import "./styles.css" 
+import Loading from '../../components/Loading';
 
 function Home() {
     const characters = useSelector((state) => state.characters.items);
@@ -17,7 +18,7 @@ function Home() {
     }, [dispatch]);
 
     if (isLoading) {
-        return <div>Loading...</div>
+        return <Loading />
     }
 
     if (error) {
