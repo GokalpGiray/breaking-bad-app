@@ -5,6 +5,7 @@ import { fetchCharacters } from '../../redux/charactersSlice';
 import Masonry from "react-masonry-css";
 import "./styles.css" 
 import Loading from '../../components/Loading';
+import Error from '../../components/Error';
 
 function Home() {
     const characters = useSelector((state) => state.characters.items);
@@ -22,7 +23,7 @@ function Home() {
     }
 
     if (error) {
-        return <div>Error: {error}</div>
+        return <Error message={error} />
     }
 
     return (
