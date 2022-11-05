@@ -37,6 +37,7 @@ function Home() {
                     characters.map(character => (
                         <div key={character.char_id}>
                             <img src={character.img} alt={character.name} className="character" />
+                            <div className='charName'>{character.name}</div>
                         </div>
                     ))
                 }

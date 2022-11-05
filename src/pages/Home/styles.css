@@ -17,3 +17,8 @@
 .character {
     width: 100%;
 }
+
+.charName {
+    padding: 10px 0;
+    font-size: 16px;
+}
