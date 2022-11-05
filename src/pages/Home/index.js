@@ -7,11 +7,22 @@ import "./styles.css"
 
 function Home() {
     const characters = useSelector((state) => state.characters.items);
+    const isLoading = useSelector((state) => state.characters.isLoading);
+    const error = useSelector((state) => state.characters.error);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(fetchCharacters());
     }, [dispatch]);
+
+    if (isLoading) {
+        return <div>Loading...</div>
+    }
+
+    if (error) {
+        return <div>Error: {error}</div>
+    }
 
     return (
         <div>
