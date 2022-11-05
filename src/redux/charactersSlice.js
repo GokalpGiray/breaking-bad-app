@@ -1,8 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const charLimit = 12;
+
 export const fetchCharacters = createAsyncThunk("characters/getCharacters", async () => {
-    const res = await axios (`${process.env.REACT_APP_API_BASE_ENDPOINT}characters?limit=10`)
+    const res = await axios (`${process.env.REACT_APP_API_BASE_ENDPOINT}characters?limit=${charLimit}`)
     return res.data;
 });
 
