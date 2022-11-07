@@ -1,0 +1,18 @@
+.quoteItem {
+    padding: 10px 0;
+}
+
+.quoteItem > q {
+    padding-right: 10px;
+}
+
+.quoteItem > strong {
+    padding-left: 10px;
+}
+
+.quotesInfo {
+    padding: 30px;
+    text-align: center;
+    font-size: larger;
+    font-weight: bolder;
+}
