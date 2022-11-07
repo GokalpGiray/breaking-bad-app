@@ -2,12 +2,27 @@
     padding: 10px 0;
 }
 
-.quoteItem > q {
-    padding-right: 10px;
+.quoteItem > a {
+    text-decoration: none;
 }
 
-.quoteItem > strong {
+.quoteItem > a > q {
+    padding-right: 10px;
+    color: #333;
+}
+
+.quoteItem > a > strong {
     padding-left: 10px;
+    color: black;
+}
+
+.quoteItem > a:hover > q {
+    text-decoration: underline;
+    color: black;
+}
+
+.quoteItem > a:hover > strong {
+    text-decoration: underline;
 }
 
 .quotesInfo {
