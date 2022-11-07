@@ -9,9 +9,20 @@
 }
 
 .my-masonary-grid_column > div {
-    background: #ddd;
-    padding: 20px;
     margin-bottom: 20px;
+}
+
+.my-masonary-grid_column > div > a {
+    display: block;
+    padding: 20px;
+    color: #333;
+    text-decoration: none;
+    background: #ddd;
+}
+
+.my-masonary-grid_column > div > a:hover{
+    color: #000;
+    background: #eee;
 }
 
 .character {

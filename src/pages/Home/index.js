@@ -1,16 +1,20 @@
 import React, { useEffect } from 'react'
+
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCharacters } from '../../redux/charactersSlice';
 
 import Masonry from "react-masonry-css";
 import "./styles.css"
+
 import Loading from '../../components/Loading';
 import Error from '../../components/Error';
+
+import { Link } from 'react-router-dom';
 
 function Home() {
     const characters = useSelector((state) => state.characters.items);
     const nextPage = useSelector((state) => state.characters.page);
-    const isLoading = useSelector((state) => state.characters.isLoading);
+    const status = useSelector((state) => state.characters.status);
     const error = useSelector((state) => state.characters.error);
     const hasNextPage = useSelector((state) => state.characters.hasNextPage);
 
@@ -18,10 +22,12 @@ function Home() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchCharacters());
-    }, [dispatch]);
+        if (status === "idle") {
+            dispatch(fetchCharacters());
+        }
+    }, [dispatch, status]);
 
-    if (error) {
+    if (status === "failed") {
         return <Error message={error} />
     }
 
@@ -37,19 +43,21 @@ function Home() {
                 {
                     characters.map(character => (
                         <div key={character.char_id}>
-                            <img src={character.img} alt={character.name} className="character" />
-                            <div className='charName'>{character.name}</div>
+                            <Link to={`/char/${character.char_id}`}>
+                                <img src={character.img} alt={character.name} className="character" />
+                                <div className='charName'>{character.name}</div>
+                            </Link>
                         </div>
                     ))
                 }
             </Masonry>
 
             <div style={{ padding: "20px 0 40px 0", textAlign: "center" }}>
-                {isLoading && <Loading />}
+                {status === "loading" && <Loading />}
 
-                {hasNextPage && !isLoading && <button onClick={() => dispatch(fetchCharacters(nextPage))}>Load More ({nextPage})</button>}
+                {hasNextPage && (status !== "loading") && <button onClick={() => dispatch(fetchCharacters(nextPage))}>Load More ({nextPage})</button>}
 
-                {!hasNextPage && <div>There is nothing to be shown</div> }
+                {!hasNextPage && <div>There is nothing to be shown</div>}
             </div>
         </div>
     )
