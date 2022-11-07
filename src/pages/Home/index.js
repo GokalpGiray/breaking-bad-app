@@ -41,7 +41,7 @@ function Home() {
                 columnClassName="my-masonary-grid_column"
             >
                 {
-                    characters.map(character => (
+                    status === "succeeded" && characters.map(character => (
                         <div key={character.char_id}>
                             <Link to={`/char/${character.char_id}`}>
                                 <img src={character.img} alt={character.name} className="character" />
